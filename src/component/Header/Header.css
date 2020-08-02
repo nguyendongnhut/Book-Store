@@ -1,0 +1,20 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+
+  background-color: pink;
+  height: 100px;
+}
+
+.Header__menu ul {
+  display: flex;
+}
+
+.Header__menu ul li {
+  margin: 0 10px;
+  list-style: none;
+}
+
+.Header__menu ul li a {
+  text-decoration: none;
+}
