@@ -1,0 +1,37 @@
+.Products {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Products__item {
+  text-align: center;
+}
+
+.Products .Products__item {
+  width: calc(25% - 40px);
+  margin: 20px;
+  padding: 20px 0;
+}
+
+.Products__img img {
+  width: 90%;
+  margin-bottom: 1em;
+}
+
+.Products__title,
+.Products__author {
+  margin-bottom: 1em;
+}
+
+.Products__name-title {
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
+.Products__author .Products__name-author {
+  font-size: 1.3em;
+}
+
+.Products__Price {
+  font-size: 1.5em;
+}
