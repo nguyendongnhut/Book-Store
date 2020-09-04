@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
+import "./Categories.css";
+import RequestApi from "../../ultilities/request";
+import * as ApiUrl from "../../constants/ApiUrl";
 
 Categories.propTypes = {
   categories: PropTypes.array,
@@ -16,12 +19,12 @@ function Categories(props) {
   useEffect(() => {
     async function FetchCategoryList() {
       try {
-        const response = await fetch(`http://localhost:3001/api/product/type`);
-        const responseJSON = await response.json();
+        const option = {
+          // method: "GET",
+          // body: JSON.stringify({}),
+        };
 
-        console.log({ responseJSON });
-        const data = responseJSON;
-        console.log("data", data);
+        const data = await RequestApi(ApiUrl.productCategoriesApi, option);
         setCategoryList(data);
       } catch (error) {
         console.log("failed: ", error.message);
@@ -38,7 +41,9 @@ function Categories(props) {
         <ul className="Category">
           {categoryList.map((item) => (
             <li key={item.MaLoaiSanPham} className="Category__Name">
-              <Link to="#">{item.TenLoaiSanPham}</Link>
+              <Link to={`/products/category/${item.MaLoaiSanPham}`}>
+                {item.TenLoaiSanPham}
+              </Link>
             </li>
           ))}
         </ul>

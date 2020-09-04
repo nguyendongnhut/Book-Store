@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
+import "./Publisher.css";
 
 Publishers.propTypes = {
   publishers: PropTypes.array,
@@ -32,14 +33,18 @@ function Publishers(props) {
     FetchPublisherList();
   }, []);
 
+  const { publisherId } = useParams();
+
   return (
     <div>
       <div className="ListPublishers">
-        <div className="ListPublisher__Name">Nhà Sản Xuất</div>
+        <div className="ListPublisher__Name">Nhà Xuất Bản</div>
         <ul className="Publisher">
           {publisherList.map((item) => (
             <li key={item.MaHangSanXuat} className="Publisher__Name">
-              <Link to="#">{item.TenHangSanXuat}</Link>
+              <Link to={`/products/publisher/${item.MaHangSanXuat}`}>
+                {item.TenHangSanXuat}
+              </Link>
             </li>
           ))}
         </ul>

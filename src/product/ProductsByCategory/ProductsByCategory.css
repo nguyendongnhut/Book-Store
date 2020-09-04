@@ -1,37 +1,37 @@
-.Products {
+.ProductCategory {
   display: flex;
   flex-wrap: wrap;
 }
 
-.Products__item {
+.ProductCategory__item {
   text-align: center;
 }
 
-.Products .Products__item {
+.ProductCategory .ProductCategory__item {
   width: calc(25% - 40px);
   margin: 20px;
   padding: 20px 0;
 }
 
-.Products__img img {
+.ProductCategory__img img {
   width: 90%;
   margin-bottom: 1em;
 }
 
-.Products__title,
-.Products__author {
+.ProductCategory__title,
+.ProductCategory__author {
   margin-bottom: 1em;
 }
 
-.Products__name-title {
+.ProductCategory__name-title {
   text-decoration: none;
   font-size: 1.5em;
 }
 
-.Products__author .Products__name-author {
+.ProductCategory__author .ProductCategory__name-author {
   font-size: 1.1em;
 }
 
-.Products__price {
+.ProductCategory__price {
   font-size: 1.8rem;
 }

@@ -1,0 +1,14 @@
+.ListCategories__Name {
+  padding: 10px 10px;
+  font-size: 1.7rem;
+  border-bottom: solid 1px;
+}
+
+.Category {
+  padding: 5px 20px;
+}
+
+.Category__Name {
+  font-size: 1.2rem;
+  padding: 5px 0;
+}

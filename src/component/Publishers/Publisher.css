@@ -1,0 +1,15 @@
+.ListPublisher__Name {
+  padding: 10px 10px;
+  font-size: 1.7rem;
+  border-bottom: solid 1px;
+  border-top: solid 1px;
+}
+
+.Publisher {
+  padding: 5px 20px;
+}
+
+.Publisher__Name {
+  font-size: 1.2rem;
+  padding: 5px 0;
+}

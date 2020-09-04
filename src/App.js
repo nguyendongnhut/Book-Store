@@ -1,17 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 
-import Header from "./component/Header/Header";
-import Products from "./product/Products/Products";
-import Categories from "./component/Categories/Categories";
-import Publishers from "./component/Publishers/Publishers";
-import ProductDetail from "./component/ProductDetail/ProductDetail";
+// import Header from "./component/Header/Header";
+// import Products from "./product/Products/Products";
+// import Categories from "./component/Categories/Categories";
+// import Publishers from "./component/Publishers/Publishers";
+// import ProductDetail from "./component/ProductDetail/ProductDetail";
+// import ProductsByPublisher from "./product/ProductsByPublisher/ProductsByPublisher";
+// import ProductsByCategory from "./product/ProductsByCategory/ProductsByCategory";
+// import AddProduct from "./component/AddProduct/AddProduct";
+// import ProductForm from "./component/ProductForm/ProductForm";
+import Login from "./Pages/Login";
+import MainPage from "./Pages/MainPage";
+import { PrivateRoute } from "./helpers/PrivateRoute";
 
 function App() {
   return (
     <div className="App">
-      <Header />
+      {/* <Header />
+      <Login />
       <section className="Content">
         <div className="Right__Content">
           <Categories />
@@ -19,11 +27,25 @@ function App() {
         </div>
         <div className="Left__Content">
           <Switch>
-            <Route path="/products" exact component={Products} />
+            <Route path="/products/add" component={ProductForm} />
+            <Route
+              path="/products/publisher/:publisherId"
+              component={ProductsByPublisher}
+            />
+            <Route
+              path="/products/category/:CategoryId"
+              component={ProductsByCategory}
+            />
+            <Route exact path="/products" component={Products} />
             <Route path="/products/:productId" component={ProductDetail} />
           </Switch>
         </div>
-      </section>
+      </section> */}
+      <Switch>
+        <Route exact path="/login" component={Login} />
+        <PrivateRoute exact path="/products" component={MainPage} />
+        <Route path="*" component={() => "404 NOT FOUND"} />
+      </Switch>
     </div>
   );
 }
