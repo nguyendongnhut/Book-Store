@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import "./ProductDetail.css";
+
 ProductDetail.propTypes = {
   product: PropTypes.array,
 };
@@ -22,8 +23,18 @@ function ProductDetail() {
   useEffect(() => {
     async function fetchProductDetail() {
       try {
+        const requestOptions = {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + sessionStorage.getItem("token"),
+          },
+        };
+
         const response = await fetch(
-          `http://localhost:3001/api/product/${productId}`
+          `http://localhost:3001/api/products/${productId}`,
+          requestOptions
         );
         const responseJSON = await response.json();
         console.log({ responseJSON });
@@ -36,20 +47,17 @@ function ProductDetail() {
     }
 
     fetchProductDetail();
-  }, []);
+  }, [productId]);
 
   return (
     <div className="Product__Detail">
       {item.map((item) => (
-        <div key={item.MaSanPham} className="product__item">
+        <div key={item.productId} className="product__item">
           <div className="product__img">
-            <img
-              src={`http://localhost:3001/images/Product/${item.HinhURL}`}
-              alt={item.TenSanPham}
-            />
+            <img src={item.image} alt={item.name} />
           </div>
           <div className="product__info">
-            <h1 className="product__title">{item.TenSanPham}</h1>
+            <h1 className="product__title">{item.name}</h1>
             <h3 className="product__author">
               {`Tác giả:  `}
               <Link to="#" className="product__name-author">
@@ -65,7 +73,8 @@ function ProductDetail() {
             <h3 className="product__type">
               {`Tên loại sản phẩm:  `}
               <Link to="#" className="product__name-type">
-                {item.TenLoaiSanPham}
+                {/* {item.TenLoaiSanPham} */}
+                {item.description}
               </Link>
             </h3>
             <p className="product__price">

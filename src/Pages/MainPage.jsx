@@ -8,7 +8,6 @@ import Publishers from "../component/Publishers/Publishers";
 import ProductDetail from "../component/ProductDetail/ProductDetail";
 import ProductsByPublisher from "../product/ProductsByPublisher/ProductsByPublisher";
 import ProductsByCategory from "../product/ProductsByCategory/ProductsByCategory";
-// import AddProduct from "./component/AddProduct/AddProduct";
 import ProductForm from "../component/ProductForm/ProductForm";
 
 function MainPage() {
@@ -28,11 +27,11 @@ function MainPage() {
               component={ProductsByPublisher}
             />
             <Route
-              path="/category/:CategoryId"
+              path="/category/:categoryId"
               component={ProductsByCategory}
             />
             <Route exact path="" component={Products} />
-            <Route path="/:productId" component={ProductDetail} />
+            <Route exact path="/:productId" component={ProductDetail} />
           </Switch>
         </div>
       </section>

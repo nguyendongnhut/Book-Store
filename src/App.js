@@ -13,7 +13,7 @@ import "./App.css";
 // import ProductForm from "./component/ProductForm/ProductForm";
 import Login from "./Pages/Login";
 import MainPage from "./Pages/MainPage";
-import { PrivateRoute } from "./helpers/PrivateRoute";
+import PrivateRoute from "./helpers/PrivateRoute";
 
 function App() {
   return (
@@ -44,7 +44,7 @@ function App() {
       <Switch>
         <Route exact path="/login" component={Login} />
         <PrivateRoute exact path="/products" component={MainPage} />
-        <Route path="*" component={() => "404 NOT FOUND"} />
+        {/* <Route path="*" component={() => "404 NOT FOUND"} /> */}
       </Switch>
     </div>
   );

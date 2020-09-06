@@ -17,8 +17,17 @@ function Publishers(props) {
   useEffect(() => {
     async function FetchPublisherList() {
       try {
+        const requestOptions = {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        };
+
         const response = await fetch(
-          `http://localhost:3001/api/product/publisher`
+          `http://localhost:3001/api/publishers`,
+          requestOptions
         );
 
         const responseJSON = await response.json();
@@ -41,9 +50,9 @@ function Publishers(props) {
         <div className="ListPublisher__Name">Nhà Xuất Bản</div>
         <ul className="Publisher">
           {publisherList.map((item) => (
-            <li key={item.MaHangSanXuat} className="Publisher__Name">
-              <Link to={`/products/publisher/${item.MaHangSanXuat}`}>
-                {item.TenHangSanXuat}
+            <li key={item.publisherId} className="Publisher__Name">
+              <Link to={`/products/publisher/${item.publisherId}`}>
+                {item.name}
               </Link>
             </li>
           ))}

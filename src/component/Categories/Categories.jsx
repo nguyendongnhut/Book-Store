@@ -40,9 +40,9 @@ function Categories(props) {
         <div className="ListCategories__Name">Thể Loại</div>
         <ul className="Category">
           {categoryList.map((item) => (
-            <li key={item.MaLoaiSanPham} className="Category__Name">
-              <Link to={`/products/category/${item.MaLoaiSanPham}`}>
-                {item.TenLoaiSanPham}
+            <li key={item.categoryId} className="Category__Name">
+              <Link to={`/products/category/${item.categoryId}`}>
+                {item.name}
               </Link>
             </li>
           ))}
