@@ -1,0 +1,75 @@
+/* .Login__Form {
+    width: 600px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+} */
+
+.Login__Form {
+  width: 500px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #191919;
+  text-align: center;
+}
+.Login__Form h1 {
+  font-size: 3em;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 50px;
+}
+.Login__Form input[type="text"],
+.Login__Form input[type="password"] {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #3498db;
+  padding: 14px 10px;
+  width: 420px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+}
+.Login__Form input[type="text"]:focus,
+.Login__Form input[type="password"]:focus {
+  width: 420px;
+  border-color: #2ecc71;
+}
+.Login__Form input[type="submit"] {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #2ecc71;
+  padding: 14px 40px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+.Login__Form input[type="submit"]:hover {
+  background: #2ecc71;
+}
+.Login__Message p {
+  font-size: 1.2em;
+  color: white;
+}
+
+/* .Auth__Login-message,
+.User__Login-message,
+.PassWord__Login-message {
+  padding: 10px 0;
+  border: solid 1px;
+  border-radius: 5px;
+  background-color: pink;
+} */

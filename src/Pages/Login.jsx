@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 
+import "./Login.css";
+
 Login.propTypes = {};
 
 Login.defaultProps = {};
@@ -58,26 +60,37 @@ function Login(props) {
   };
 
   return (
-    <div className="Login__form">
-      {message ? message : ""}
-      {errors.userAccount && "user account is required"}
-      {errors.password && "password is required"}
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <label>Name</label>
-        <input
-          type="text"
-          name="userAccount"
-          ref={register({ required: true })}
-        />
+    <div className="Login__Form">
+      <h1>Login</h1>
+      <div className="Login__Message">
+        <p className="Auth__Login-message">{message ? message : ""}</p>
+        <p className="User__Login-message">
+          {errors.userAccount && "user account is required"}
+        </p>
+        <p className="PassWord__Login-message">
+          {errors.password && "password is required"}
+        </p>
+      </div>
+      <div>
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <label>Name</label>
+          <input
+            className="User__Input"
+            type="text"
+            name="userAccount"
+            ref={register({ required: true })}
+          />
 
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          ref={register({ required: true })}
-        />
-        <input type="submit" />
-      </Form>
+          <label>Password</label>
+          <input
+            className="User__Password"
+            type="password"
+            name="password"
+            ref={register({ required: true })}
+          />
+          <input type="submit" />
+        </Form>
+      </div>
     </div>
   );
 }
