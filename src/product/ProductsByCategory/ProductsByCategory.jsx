@@ -16,13 +16,21 @@ ProductsByCategory.defaultProps = {
 function ProductsByCategory() {
   const [listCategory, setListCategory] = useState([]);
 
-  const { CategoryId } = useParams();
+  const { categoryId } = useParams();
 
   useEffect(() => {
     async function FetchListCategory() {
       try {
         const response = await fetch(
-          `http://localhost:3001/api/product/category/${CategoryId}`
+          `http://localhost:3001/api/products/categorys/${categoryId}`,
+          {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + sessionStorage.getItem("token"),
+            },
+          }
         );
 
         const responseJSON = await response.json();
@@ -36,37 +44,35 @@ function ProductsByCategory() {
     }
 
     FetchListCategory();
-  }, [listCategory.length, CategoryId]);
+  }, [listCategory.length, categoryId]);
 
   return (
     <div className="ListProductCategory">
       <ul className="ProductCategory">
         {listCategory.map((item) => (
-          <li key={item.MaSanPham} className="ProductCategory__item">
+          <li key={item.productId} className="ProductCategory__item">
             <div className="ProductCategory__info">
               <div className="ProductCategory__img">
-                <img
-                  src={`http://localhost:3001/images/Product/${item.HinhURL}`}
-                  alt={item.TenSanPham}
-                />
+                <img src={item.image} alt={item.name} />
               </div>
               <div className="ProductCategory__title">
                 <Link
-                  to={`/products/${item.MaSanPham}`}
+                  to={`/products/${item.productId}`}
                   className="ProductCategory__name-title"
-                  title={item.TenSanPham}
+                  title={item.name}
                 >
-                  {item.TenSanPham.length > 15
-                    ? item.TenSanPham.substr(0, 15) + "..."
-                    : item.TenSanPham}
+                  {item.name.length > 15
+                    ? item.name.substr(0, 15) + "..."
+                    : item.name}
                 </Link>
               </div>
               <div className="ProductCategory__author">
                 <p className="ProductCategory__name-author">
                   <Link to="#">{item.TenTacGia}</Link>
+                  <p>{item.description}</p>
                 </p>
               </div>
-              <div className="ProductCategory__price">{`${item.GiaSanPham} VNĐ`}</div>
+              {/* <div className="ProductCategory__price">{`${item.GiaSanPham} VNĐ`}</div> */}
             </div>
           </li>
         ))}

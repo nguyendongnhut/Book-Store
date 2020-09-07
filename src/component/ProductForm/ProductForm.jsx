@@ -11,7 +11,7 @@ function ProductForm(props) {
   const { register, handleSubmit, errors } = useForm();
   const [ListProducts, setListProducts] = useState([]);
   const [formData, setFormData] = useState([]);
-  const [types, setTypes] = useState([]);
+  const [categorys, setCategorys] = useState([]);
   const [publishers, setPublishers] = useState([]);
 
   const onSubmit = (data) => {
@@ -20,11 +20,12 @@ function ProductForm(props) {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        Authorization: "Bearer" + sessionStorage.getItem("token"),
       },
       body: JSON.stringify({
         TenSanPham: data.bookName,
         TenTacGia: data.authorName,
-        MaLoaiSanPham: data.type,
+        MaLoaiSanPham: data.category,
         MaHangSanXuat: data.publisher,
         GiaSanPham: data.price,
         HinhURL: data.imagesUrl,
@@ -39,49 +40,49 @@ function ProductForm(props) {
   };
 
   useEffect(() => {
-    async function FetchGetTypes() {
+    // send request ap get category
+    async function FetchGetCategorys() {
       try {
-        const response = await fetch(`http://localhost:3001/api/admin/getType`);
+        const response = await fetch(`http://localhost:3001/api/categorys`);
 
         const responseJSON = await response.json();
         const data = responseJSON;
-        setTypes(data);
+        setCategorys(data);
       } catch (error) {
-        console.log("get type fail: ", error.message);
+        console.log("get category fail: ", error.message);
       }
     }
 
+    // send request api get list publisher
     async function FetchGetPublishers() {
       try {
-        const response = await fetch(
-          `http://localhost:3001/api/admin/getPublisher`
-        );
+        const response = await fetch(`http://localhost:3001/api/publishers`);
 
         const responseJSON = await response.json();
 
         const data = responseJSON;
         setPublishers(data);
       } catch (error) {
-        console.log("get type fail: ", error.message);
+        console.log("get publisher fail: ", error.message);
       }
     }
 
-    FetchGetTypes();
+    FetchGetCategorys();
     FetchGetPublishers();
   }, []);
 
-  const ListTypes = types.map((item) => {
+  const ListCategorys = categorys.map((item) => {
     return (
-      <option value={item.MaLoaiSanPham} key={item.MaLoaiSanPham}>
-        {item.TenLoaiSanPham}
+      <option value={item.categoryId} key={item.categoryId}>
+        {item.name}
       </option>
     );
   });
 
   const ListPublishers = publishers.map((item) => {
     return (
-      <option value={item.MaHangSanXuat} key={item.MaHangSanXuat}>
-        {item.TenHangSanXuat}
+      <option value={item.publisherId} key={item.publisherId}>
+        {item.name}
       </option>
     );
   });
@@ -93,8 +94,8 @@ function ProductForm(props) {
       <label>Author Name</label>
       <input name="authorName" ref={register} />
       <label>Type</label>
-      <select name="type" ref={register}>
-        {ListTypes}
+      <select name="category" ref={register}>
+        {ListCategorys}
       </select>
       <label>Publisher</label>
       <select name="publisher" ref={register}>
