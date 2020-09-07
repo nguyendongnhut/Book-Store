@@ -31,21 +31,6 @@ function Login(props) {
       }),
     };
 
-    // fetch("http://localhost:3001/api/users", {
-    //   method: "GET",
-    //   headers: { "Content-Type": "application/json" },
-    // }).then(async (response) => {
-    //   const data = await response.json();
-
-    //   let user = data.filter((item) => {
-    //     return uAccount === item.useraccount;
-    //   });
-
-    //   if(!user) {
-
-    //   }
-    // })
-
     fetch(`http://localhost:3001/api/auth`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
@@ -63,17 +48,23 @@ function Login(props) {
     <div className="Login__Form">
       <h1>Login</h1>
       <div className="Login__Message">
-        <p className="Auth__Login-message">{message ? message : ""}</p>
-        <p className="User__Login-message">
-          {errors.userAccount && "user account is required"}
-        </p>
-        <p className="PassWord__Login-message">
-          {errors.password && "password is required"}
-        </p>
+        {message && !errors.userAccount && !errors.password ? (
+          <p className="Auth__Login-message">{message}</p>
+        ) : (
+          ""
+        )}
+
+        {errors.userAccount && (
+          <p className="User__Login-message">{"user account is required"}</p>
+        )}
+
+        {errors.password && (
+          <p className="PassWord__Login-message">{"password is required"}</p>
+        )}
       </div>
       <div>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <label>Name</label>
+          <label>Username</label>
           <input
             className="User__Input"
             type="text"

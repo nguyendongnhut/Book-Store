@@ -21,17 +21,21 @@ function MainPage() {
         </div>
         <div className="Left__Content">
           <Switch>
-            <Route path="/add" component={ProductForm} />
+            <Route path="/products/add" component={ProductForm} />
             <Route
-              path="/publisher/:publisherId"
+              path="/products/publisher/:publisherId"
               component={ProductsByPublisher}
             />
             <Route
-              path="/category/:categoryId"
+              path="/products/category/:categoryId"
               component={ProductsByCategory}
             />
-            <Route exact path="" component={Products} />
-            <Route exact path="/:productId" component={ProductDetail} />
+            <Route exact path="/products" component={Products} />
+            <Route
+              exact
+              path="/products/:productId"
+              component={ProductDetail}
+            />
           </Switch>
         </div>
       </section>

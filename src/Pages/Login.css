@@ -63,13 +63,21 @@
 .Login__Message p {
   font-size: 1.2em;
   color: white;
+  margin: 5px 0;
 }
 
-/* .Auth__Login-message,
+.Auth__Login-message,
 .User__Login-message,
 .PassWord__Login-message {
   padding: 10px 0;
   border: solid 1px;
   border-radius: 5px;
   background-color: pink;
-} */
+}
+
+form.form label {
+  color: white;
+  float: left;
+  font-size: 1.2em;
+  padding: 5px 0;
+}

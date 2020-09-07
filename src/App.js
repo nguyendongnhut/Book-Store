@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import "./App.css";
 
 // import Header from "./component/Header/Header";
@@ -14,6 +14,8 @@ import "./App.css";
 import Login from "./Pages/Login";
 import MainPage from "./Pages/MainPage";
 import PrivateRoute from "./helpers/PrivateRoute";
+
+// import AddProduct from "./component/ProductForm/ProductForm";
 
 function App() {
   return (
@@ -43,8 +45,10 @@ function App() {
       </section> */}
       <Switch>
         <Route exact path="/login" component={Login} />
-        <PrivateRoute exact path="/products" component={MainPage} />
-        {/* <Route path="*" component={() => "404 NOT FOUND"} /> */}
+
+        <PrivateRoute path="/products" component={MainPage} />
+        {/* <Route path="/products/add" component={AddProduct} /> */}
+        <Route path="*" component={() => "404 NOT FOUND"} />
       </Switch>
     </div>
   );
