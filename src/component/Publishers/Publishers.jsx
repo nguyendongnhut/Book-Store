@@ -42,8 +42,6 @@ function Publishers(props) {
     FetchPublisherList();
   }, []);
 
-  const { publisherId } = useParams();
-
   return (
     <div>
       <div className="ListPublishers">
