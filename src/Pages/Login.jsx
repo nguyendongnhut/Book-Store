@@ -4,7 +4,7 @@ import { Form } from "semantic-ui-react";
 import { useInput } from "../hooks/input-hook";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import "./Login.css";
 

@@ -56,39 +56,6 @@ function Products(props) {
   }, []);
 
   return (
-    // <div className="ListProducts">
-    //   <ul className="Products">
-    //     {productList.map((item) => (
-    //       <li key={item.MaSanPham} className="Products__item">
-    //         <div className="Products__info">
-    //           <div className="Products__img">
-    //             <img
-    //               src={`http://localhost:3001/images/Product/${item.HinhURL}`}
-    //               alt={item.TenSanPham}
-    //             />
-    //           </div>
-    //           <div className="Products__title">
-    //             <Link
-    //               to={`/products/${item.MaSanPham}`}
-    //               className="Products__name-title"
-    //               title={item.TenSanPham}
-    //             >
-    //               {item.TenSanPham.length > 15
-    //                 ? item.TenSanPham.substr(0, 15) + "..."
-    //                 : item.TenSanPham}
-    //             </Link>
-    //           </div>
-    //           <div className="Products__author">
-    //             <p className="Products__name-author">
-    //               <Link to="#">{item.TenTacGia}</Link>
-    //             </p>
-    //           </div>
-    //           <div className="Products__price">{`${item.GiaSanPham} VNĐ`}</div>
-    //         </div>
-    //       </li>
-    //     ))}
-    //   </ul>
-    // </div>
     <div className="ListProducts">
       <ul className="Products">
         {productList.map((item) => (
@@ -110,9 +77,10 @@ function Products(props) {
               </div>
               <div className="Products__author">
                 <p className="Products__name-author">
-                  <Link to="#">{item.description}</Link>
+                  <Link to="#">{item.authorname}</Link>
                 </p>
               </div>
+              <div className="Products__price">{`${item.price} VNĐ`}</div>
             </div>
           </li>
         ))}

@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { Form } from "semantic-ui-react";
 import { useInput } from "../../hooks/input-hook";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 
-ProductForm.propTypes = {};
+ProductForm.propTypes = {
+  product: PropTypes.object,
+};
 
-ProductForm.defaultProps = {};
+ProductForm.defaultProps = {
+  product: {},
+};
 
 function ProductForm(props) {
   const { register, handleSubmit, errors } = useForm();
@@ -14,29 +20,34 @@ function ProductForm(props) {
   const [categorys, setCategorys] = useState([]);
   const [publishers, setPublishers] = useState([]);
 
+  const history = useHistory();
+
   const onSubmit = (data) => {
     const requestOptions = {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization: "Bearer" + sessionStorage.getItem("token"),
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
       },
       body: JSON.stringify({
-        TenSanPham: data.bookName,
-        TenTacGia: data.authorName,
-        MaLoaiSanPham: data.category,
-        MaHangSanXuat: data.publisher,
-        GiaSanPham: data.price,
-        HinhURL: data.imagesUrl,
-        MoTa: data.description,
+        name: data.bookName,
+        authorname: data.authorName,
+        categoryId: data.category,
+        publisherId: data.publisher,
+        price: data.price,
+        image: JSON.stringify(data.imagesUrl),
+        description: data.description,
       }),
     };
-    fetch(`http://localhost:3001/api/admin/addBook`, requestOptions)
+    fetch(`http://localhost:3001/api/products`, requestOptions)
       .then((response) => response.json())
-      .then((data) => setListProducts(data));
+      .then((data) => {
+        console.log(data);
+        setListProducts(data);
+      });
 
-    document.getElementById("reset-form-add").reset();
+    history.push("/products");
   };
 
   useEffect(() => {

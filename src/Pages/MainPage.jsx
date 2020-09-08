@@ -9,6 +9,8 @@ import ProductDetail from "../component/ProductDetail/ProductDetail";
 import ProductsByPublisher from "../product/ProductsByPublisher/ProductsByPublisher";
 import ProductsByCategory from "../product/ProductsByCategory/ProductsByCategory";
 import ProductForm from "../component/ProductForm/ProductForm";
+import AddPublisher from "../component/AddPublisher/AddPublisher";
+import UpdatePublisher from "../component/UpdatePublisher/UpdatePublisher";
 
 function MainPage() {
   return (
@@ -21,7 +23,12 @@ function MainPage() {
         </div>
         <div className="Left__Content">
           <Switch>
-            <Route path="/products/add" component={ProductForm} />
+            <Route path="/products/AddProduct" component={ProductForm} />
+            <Route path="/products/AddPublisher" component={AddPublisher} />
+            <Route
+              path="/products/UpdatePublisher"
+              component={UpdatePublisher}
+            />
             <Route
               path="/products/publisher/:publisherId"
               component={ProductsByPublisher}
