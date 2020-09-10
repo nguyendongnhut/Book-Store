@@ -4,6 +4,7 @@ import { Form } from "semantic-ui-react";
 import { useInput } from "../../hooks/input-hook";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 ProductForm.propTypes = {
   product: PropTypes.object,
@@ -19,10 +20,28 @@ function ProductForm(props) {
   const [formData, setFormData] = useState([]);
   const [categorys, setCategorys] = useState([]);
   const [publishers, setPublishers] = useState([]);
+  const [file, setFile] = useState("");
+
+  const [uploadedFile, setUploadedFile] = useState({});
 
   const history = useHistory();
 
+  const handleImage = (e) => {
+    let reader = new FileReader();
+    let file = e.target.files[0];
+    reader.onloadend = () => {
+      setFile(file);
+    };
+    if (file != null) {
+      reader.readAsDataURL(file);
+    }
+  };
+
   const onSubmit = (data) => {
+    if (file != null) {
+      handleUploadImage();
+    }
+
     const requestOptions = {
       method: "POST",
       headers: {
@@ -36,7 +55,7 @@ function ProductForm(props) {
         categoryId: data.category,
         publisherId: data.publisher,
         price: data.price,
-        image: JSON.stringify(data.imagesUrl),
+        image: file.name,
         description: data.description,
       }),
     };
@@ -49,6 +68,69 @@ function ProductForm(props) {
 
     history.push("/products");
   };
+
+  const handleUploadImage = async (e) => {
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      const res = await axios.post(
+        "http://localhost:3001/api/products/uploadImage",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: "Bearer " + sessionStorage.getItem("token"),
+          },
+        }
+      );
+
+      const { fileName, filePath } = res.data;
+
+      setUploadedFile({ fileName, filePath });
+
+      console.log("File Uploaded");
+    } catch (err) {
+      if (err.response.status === 500) {
+        console.log("There was a problem with the server");
+      } else {
+        console.log(err.response.data.msg);
+      }
+    }
+    // const formData = new FormData();
+    // formData.append("image", file);
+
+    // // axios.post("http://localhost:3001/api/products/uploadImage", {
+    // //   headers: {
+    // //     "Content-Type": "multipart/form-data",
+    // //     Authorization: "Bearer " + sessionStorage.getItem("token"),
+    // //   },
+    // //   formData,
+    // // });
+
+    // const requestOptions = {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Access-Control-Allow-Origin": "*",
+    //     "Content-Type": "multipart/form-data",
+    //     Authorization: "Bearer " + sessionStorage.getItem("token"),
+    //   },
+    // };
+    // fetch(
+    //   `http://localhost:3001/api/products/uploadImage`,
+    //   requestOptions,
+    //   formData
+    // )
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //   });
+  };
+
+  // const handleImage = (e) => {
+  //   setFile(e.target.files[0]);
+  // };
 
   useEffect(() => {
     // send request ap get category
@@ -99,7 +181,11 @@ function ProductForm(props) {
   });
 
   return (
-    <Form id="reset-form-add" onSubmit={handleSubmit(onSubmit)}>
+    <Form
+      id="reset-form-add"
+      onSubmit={handleSubmit(onSubmit)}
+      encType="multipart/form-data"
+    >
       <label>Book Name</label>
       <input name="bookName" ref={register} />
       <label>Author Name</label>
@@ -125,8 +211,9 @@ function ProductForm(props) {
       <input
         id="file"
         type="file"
-        name="imagesUrl"
+        name="image"
         ref={register}
+        onChange={handleImage}
         // The onChange should trigger updates whenever
         // the value changes?
         // Try to select a file, then try selecting another one.

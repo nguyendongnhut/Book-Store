@@ -62,7 +62,10 @@ function Products(props) {
           <li key={item.productId} className="Products__item">
             <div className="Products__info">
               <div className="Products__img">
-                <img src={item.image} alt={item.name} />
+                <img
+                  src={`http://localhost:3001/api/image/${item.image}`}
+                  alt={item.name}
+                />
               </div>
               <div className="Products__title">
                 <Link
