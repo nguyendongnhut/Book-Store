@@ -16,36 +16,38 @@ function MainPage() {
   return (
     <div className="App">
       <Header />
-      <section className="Content">
-        <div className="Right__Content">
-          <Categories />
-          <Publishers />
-        </div>
-        <div className="Left__Content">
-          <Switch>
-            <Route path="/products/AddProduct" component={ProductForm} />
-            <Route path="/products/AddPublisher" component={AddPublisher} />
-            <Route
-              path="/products/UpdatePublisher"
-              component={UpdatePublisher}
-            />
-            <Route
-              path="/products/publisher/:publisherId"
-              component={ProductsByPublisher}
-            />
-            <Route
-              path="/products/category/:categoryId"
-              component={ProductsByCategory}
-            />
-            <Route exact path="/products" component={Products} />
-            <Route
-              exact
-              path="/products/:productId"
-              component={ProductDetail}
-            />
-          </Switch>
-        </div>
-      </section>
+      <div className="container">
+        <section className="Content">
+          <div className="Right__Content">
+            <Categories />
+            <Publishers />
+          </div>
+          <div className="Left__Content">
+            <Switch>
+              <Route path="/products/AddProduct" component={ProductForm} />
+              <Route path="/products/AddPublisher" component={AddPublisher} />
+              <Route
+                path="/products/UpdatePublisher"
+                component={UpdatePublisher}
+              />
+              <Route
+                path="/products/publisher/:publisherId"
+                component={ProductsByPublisher}
+              />
+              <Route
+                path="/products/category/:categoryId"
+                component={ProductsByCategory}
+              />
+              <Route exact path="/products" component={Products} />
+              <Route
+                exact
+                path="/products/:productId"
+                component={ProductDetail}
+              />
+            </Switch>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

@@ -7,14 +7,21 @@ a {
   color: black;
 }
 
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
 .Content {
   display: flex;
+  margin-top: 2.5em;
 }
 
 .Right__Content {
   width: 25%;
   /* padding: 40px 40px; */
-  margin: 40px;
+  /* margin: 40px; */
+  margin-right: 2em;
   border: solid 1px;
   display: inline-table;
 }
