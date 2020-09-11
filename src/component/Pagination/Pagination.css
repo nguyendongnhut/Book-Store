@@ -1,0 +1,13 @@
+.Pagination__List {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: nowrap;
+}
+
+.Pagination__Item {
+    display: flex;
+    padding: 10px 15px;
+    border: solid 0.3px;
+    background-color: turquoise;
+}
