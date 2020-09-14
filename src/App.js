@@ -15,12 +15,16 @@ import Login from "./Pages/Login";
 import MainPage from "./Pages/MainPage";
 import PrivateRoute from "./helpers/PrivateRoute";
 
+import Cart from "./component/Cart/Cart";
+import CartProvider from "./Contexts/CartContext";
+
 // import AddProduct from "./component/ProductForm/ProductForm";
 
 function App() {
   return (
-    <div className="App">
-      {/* <Header />
+    <CartProvider>
+      <div className="App">
+        {/* <Header />
       <Login />
       <section className="Content">
         <div className="Right__Content">
@@ -43,14 +47,15 @@ function App() {
           </Switch>
         </div>
       </section> */}
-      <Switch>
-        <Route exact path="/login" component={Login} />
+        <Switch>
+          <Route exact path="/login" component={Login} />
 
-        <PrivateRoute path="/products" component={MainPage} />
-        {/* <Route path="/products/add" component={AddProduct} /> */}
-        <Route path="*" component={() => "404 NOT FOUND"} />
-      </Switch>
-    </div>
+          <PrivateRoute path="/products" component={MainPage} />
+          {/* <Route path="/products/add" component={AddProduct} /> */}
+          <Route path="*" component={() => "404 NOT FOUND"} />
+        </Switch>
+      </div>
+    </CartProvider>
   );
 }
 

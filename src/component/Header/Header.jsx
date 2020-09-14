@@ -2,12 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 
+import Cart from "../Cart/Cart";
+
 function Header() {
   return (
     <div className="Header">
       <div className="Header__logo"></div>
       <div className="Header__menu">
         <ul>
+          <li>
+            <Cart />
+          </li>
           <li>
             <Link to="/">Home</Link>
           </li>

@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import Pagination from "../../component/Pagination/Pagination";
 
+import { CartContext } from "../../Contexts/CartContext";
+
 import "./Products.css";
+import Cart from "../../component/Cart/Cart";
 
 Products.propTypes = {
   products: PropTypes.array,
@@ -18,6 +21,8 @@ function Products(props) {
   const [productList, setProductList] = useState([]);
   const [page, setPage] = useState(1);
   const [perPage] = useState(8);
+
+  const [cart, setCart] = useContext(CartContext);
 
   useEffect(() => {
     async function fetchProductList() {
@@ -75,6 +80,32 @@ function Products(props) {
     }
   };
 
+  const addToCart = (key) => {
+    console.log(key._targetInst.key);
+    //get index button onClick
+
+    //filter get product from productList according to key button
+    const tshirt = productList.filter((item) => {
+      return item.productId === parseInt(key._targetInst.key);
+    });
+    console.log(tshirt);
+
+    let tshirt1 = {
+      id: tshirt[0].productId,
+      name: tshirt[0].name,
+      price: tshirt[0].price,
+    };
+
+    if (!tshirt.Array && tshirt.length > 0) {
+      setCart((currentState) => [...currentState, tshirt1]);
+    } else {
+      setCart((currentState) => [...currentState, tshirt1]);
+    }
+
+    // const tshirt = { name: props.name, price: props.price };
+    // setCart((currentState) => [...currentState, tshirt]);
+  };
+
   let ListProduct = currentProduct.map((item) => (
     <li key={item.productId} className="Products__item">
       <div className="Products__info">
@@ -101,6 +132,11 @@ function Products(props) {
           </p>
         </div>
         <div className="Products__price">{`${item.price} VNĐ`}</div>
+        <div>
+          <button onClick={addToCart} key={item.productId}>
+            Add to cart
+          </button>
+        </div>
       </div>
     </li>
   ));
