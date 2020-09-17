@@ -9,6 +9,7 @@ import { CartContext } from "../Contexts/CartContext";
 import Header from "../component/Header/Header";
 
 import "./CartProduct.css";
+import { useEffect } from "react";
 
 CartProduct.propTypes = {};
 
@@ -38,9 +39,51 @@ function CartProduct(props) {
 
   console.log(newCart);
 
+  const deleteCartProduct = (key) => {
+    console.log(key._targetInst.key);
+
+    let deleteCart = cart.filter((item) => {
+      return item.id != parseInt(key._targetInst.key);
+    });
+
+    setCart(deleteCart);
+  };
+
+  const decreaseCartProduct = (key) => {
+    debugger;
+    const index = cart.findIndex((x) => x.id === parseInt(key._targetInst.key));
+
+    if (index > -1) {
+      let decrease = cart.splice(index, 1);
+    }
+    // setCart(cart);
+    setCart((currentState) => [...currentState]);
+  };
+
+  const increaseCartProduct = (key) => {
+    const tshirt = cart.filter((item) => {
+      return item.id === parseInt(key._targetInst.key);
+    });
+
+    let tshirt1 = {
+      id: tshirt[0].id,
+      image: tshirt[0].image,
+      name: tshirt[0].name,
+      authorname: tshirt[0].authorname,
+      price: tshirt[0].price,
+    };
+
+    setCart((currentState) => [...currentState, tshirt1]);
+  };
+
+  // useEffect(() => {
+  //   deleteCartProduct();
+  //   increaseCartProduct();
+  // }, [cart.length]);
+
   let listCarts = newCart.map((item) => (
     <li key={item.id} className="Cart-products__product">
-      <div class="Cart-products__items">
+      <div className="Cart-products__items">
         <div className="Cart-products__img">
           <Link to="#">
             <img
@@ -57,7 +100,13 @@ function CartProduct(props) {
               </Link>
               <span className="Cart-products__author">{item.authorname}</span>
               <p className="Cart-products__actions">
-                <span className="Cart-products__del">delete</span>
+                <span
+                  className="Cart-products__del"
+                  onClick={deleteCartProduct}
+                  key={item.id}
+                >
+                  delete
+                </span>
               </p>
             </div>
             <div className="Cart-products__details">
@@ -66,9 +115,21 @@ function CartProduct(props) {
               </div>
               <div className="Cart-products__qty">
                 <div className="CartQty__StyledCartQty-o1bx97-0 iaIXXn">
-                  <span className="qty-decrease qty-disable">-</span>
+                  <span
+                    className="qty-decrease qty-disable"
+                    onClick={decreaseCartProduct}
+                    key={item.id}
+                  >
+                    -
+                  </span>
                   <p className="qty-input">{item.count}</p>
-                  <span className="qty-increase">+</span>
+                  <span
+                    className="qty-increase"
+                    onClick={increaseCartProduct}
+                    key={item.id}
+                  >
+                    +
+                  </span>
                 </div>
               </div>
             </div>
