@@ -12,6 +12,8 @@ import ProductForm from "../component/ProductForm/ProductForm";
 import AddPublisher from "../component/AddPublisher/AddPublisher";
 import UpdatePublisher from "../component/UpdatePublisher/UpdatePublisher";
 
+import CartProduct from "../Pages/CartProduct";
+
 function MainPage() {
   return (
     <div className="App">
@@ -46,6 +48,7 @@ function MainPage() {
               />
             </Switch>
           </div>
+          {/* <CartProduct /> */}
         </section>
       </div>
     </div>

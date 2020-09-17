@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { CartContext } from "../../Contexts/CartContext";
 import { Products } from "../../product/Products/Products";
 import PropTypes from "prop-types";
@@ -12,7 +13,9 @@ function Cart(props) {
 
   return (
     <div>
-      <span>items in cart: {cart.length}</span>
+      <Link to="/cart">
+        <span>items in cart: {cart.length}</span>
+      </Link>
       <br />
       <span>total price: {totalPrice}</span>
     </div>

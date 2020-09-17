@@ -88,11 +88,12 @@ function Products(props) {
     const tshirt = productList.filter((item) => {
       return item.productId === parseInt(key._targetInst.key);
     });
-    console.log(tshirt);
 
     let tshirt1 = {
       id: tshirt[0].productId,
+      image: tshirt[0].image,
       name: tshirt[0].name,
+      authorname: tshirt[0].authorname,
       price: tshirt[0].price,
     };
 

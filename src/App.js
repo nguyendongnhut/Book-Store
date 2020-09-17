@@ -17,6 +17,7 @@ import PrivateRoute from "./helpers/PrivateRoute";
 
 import Cart from "./component/Cart/Cart";
 import CartProvider from "./Contexts/CartContext";
+import CartProduct from "./Pages/CartProduct";
 
 // import AddProduct from "./component/ProductForm/ProductForm";
 
@@ -52,7 +53,7 @@ function App() {
 
           <PrivateRoute path="/products" component={MainPage} />
           {/* <Route path="/products/add" component={AddProduct} /> */}
-          <Route path="*" component={() => "404 NOT FOUND"} />
+          <Route path="/cart" component={CartProduct} />
         </Switch>
       </div>
     </CartProvider>
