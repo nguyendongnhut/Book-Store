@@ -160,21 +160,47 @@ function CartProduct(props) {
   // };
 
   // post detail order on server
-  // const detailOrders = async () => {
-  //   const requestOptions = {
-  //     method: "POST",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
+  const detailOrders = async (id) => {
+    const orderId = id;
 
-  //     }),
-  //   };
+    let newCart = cart.reduce(
+      (function (hash) {
+        return function (array, obj) {
+          if (!hash[obj.id])
+            array.push(
+              (hash[obj.id] = {
+                id: obj.id,
+                name: obj.name,
+                authorname: obj.authorname,
+                image: obj.image,
+                price: obj.price,
+                count: 1,
+                orderId: orderId,
+              })
+            );
+          else hash[obj.id].count++;
+          return array;
+        };
+      })({}),
+      []
+    );
 
-  //   const response = await fetch(`http://localhost:3001/api/cart/orders`, requestOptions);
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        cart: newCart,
+      }),
+    };
 
-  // }
+    const response = await fetch(
+      `http://localhost:3001/api/cart/orderDetails`,
+      requestOptions
+    );
+  };
 
   async function Pay() {
     if (!sessionStorage.getItem("token")) {
@@ -184,6 +210,10 @@ function CartProduct(props) {
     const id = await addOrder();
     // const orderId = getOrderId();
     console.log(id);
+
+    detailOrders(id);
+    setCart([]);
+    history.push("/products");
   }
 
   let listCarts = newCart.map((item, index) => (
