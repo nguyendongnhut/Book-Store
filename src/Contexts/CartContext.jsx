@@ -6,7 +6,17 @@ CartProvider.propTypes = {};
 export const CartContext = React.createContext();
 
 function CartProvider(props) {
-  const [cart, setCart] = useState([]);
+  // if (!localStorage.getItem("carts")) {
+  //   const [cart, setCart] = useState([]);
+  // } else {
+  //   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("carts")));
+  // }
+
+  const [cart, setCart] = useState(
+    !localStorage.getItem("carts")
+      ? []
+      : JSON.parse(localStorage.getItem("carts"))
+  );
 
   return (
     <CartContext.Provider value={[cart, setCart]}>

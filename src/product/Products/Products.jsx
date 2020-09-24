@@ -107,6 +107,8 @@ function Products(props) {
     // setCart((currentState) => [...currentState, tshirt]);
   };
 
+  localStorage.setItem("carts", JSON.stringify(cart));
+
   let ListProduct = currentProduct.map((item) => (
     <li key={item.productId} className="Products__item">
       <div className="Products__info">
