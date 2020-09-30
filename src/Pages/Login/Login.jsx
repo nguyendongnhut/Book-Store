@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Form } from "semantic-ui-react";
-import { useInput } from "../hooks/input-hook";
+import { useInput } from "./../../hooks/input-hook";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";

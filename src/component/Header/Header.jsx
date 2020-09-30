@@ -1,10 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./Header.css";
 
 import Cart from "../Cart/Cart";
+import Info from "../Info/Info";
 
 function Header() {
+  const history = useHistory();
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("token");
+
+    history.push("/login");
+  };
+
   return (
     <div className="Header">
       <div className="Header__logo"></div>
@@ -14,14 +23,20 @@ function Header() {
             <Cart />
           </li>
           <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
             <Link to="/products">Products</Link>
           </li>
+          <li>
+            <Info />
+          </li>
+          {sessionStorage.getItem("token") ? (
+            <li>
+              <button onClick={handleLogout}>Logout</button>
+            </li>
+          ) : (
+            <li>
+              <button>Login</button>
+            </li>
+          )}
         </ul>
       </div>
     </div>

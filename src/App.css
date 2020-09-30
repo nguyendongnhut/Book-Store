@@ -12,18 +12,20 @@ a {
   margin: 0 auto;
 }
 
+.main {
+  background-color: #f4f4f4;
+}
+
 .Content {
   display: flex;
-  margin-top: 2.5em;
+  padding-top: 2.5em;
 }
 
 .Right__Content {
   width: 25%;
-  /* padding: 40px 40px; */
-  /* margin: 40px; */
-  margin-right: 2em;
-  border: solid 1px;
   display: inline-table;
+  background-color: white;
+  border-right: solid 2px #f4f4f4;
 }
 
 .Left__Content {

@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 
 import { Link, useHistory } from "react-router-dom";
 
-import Cart from "../component/Cart/Cart";
-import { CartContext } from "../Contexts/CartContext";
+import Cart from "../../component/Cart/Cart";
+import { CartContext } from "../../Contexts/CartContext";
 
-import Header from "../component/Header/Header";
+import Header from "../../component/Header/Header";
 
 import "./CartProduct.css";
 import { useEffect } from "react";

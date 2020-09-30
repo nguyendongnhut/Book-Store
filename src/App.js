@@ -11,13 +11,13 @@ import "./App.css";
 // import ProductsByCategory from "./product/ProductsByCategory/ProductsByCategory";
 // import AddProduct from "./component/AddProduct/AddProduct";
 // import ProductForm from "./component/ProductForm/ProductForm";
-import Login from "./Pages/Login";
+import Login from "./Pages/Login/Login";
 import MainPage from "./Pages/MainPage";
 import PrivateRoute from "./helpers/PrivateRoute";
 
 import Cart from "./component/Cart/Cart";
 import CartProvider from "./Contexts/CartContext";
-import CartProduct from "./Pages/CartProduct";
+import CartProduct from "./Pages/CartProduct/CartProduct";
 
 // import AddProduct from "./component/ProductForm/ProductForm";
 

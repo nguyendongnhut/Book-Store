@@ -35,18 +35,24 @@ function Categories(props) {
   }, []);
 
   return (
-    <div>
-      <div className="ListCategories">
-        <div className="ListCategories__Name">Thể Loại</div>
-        <ul className="Category">
-          {categoryList.map((item) => (
-            <li key={item.categoryId} className="Category__Name">
-              <Link to={`/products/category/${item.categoryId}`}>
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+    <div className="panel-group box-left">
+      <div className="panel panel-info">
+        <div className="panel-heading">
+          <h4 className="panel-title">Thể Loại</h4>
+        </div>
+        <div className="panel-collapse collapse in">
+          <div className="list-group">
+            <ul className="Category">
+              {categoryList.map((item) => (
+                <li key={item.categoryId} className="Category__Name">
+                  <Link to={`/products/category/${item.categoryId}`}>
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );

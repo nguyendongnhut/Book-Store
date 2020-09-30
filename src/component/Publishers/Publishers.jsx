@@ -43,18 +43,24 @@ function Publishers(props) {
   }, []);
 
   return (
-    <div>
-      <div className="ListPublishers">
-        <div className="ListPublisher__Name">Nhà Xuất Bản</div>
-        <ul className="Publisher">
-          {publisherList.map((item) => (
-            <li key={item.publisherId} className="Publisher__Name">
-              <Link to={`/products/publisher/${item.publisherId}`}>
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+    <div className="panel-group box-left">
+      <div className="panel panel-info">
+        <div className="panel-heading">
+          <h4 className="panel-title">Nhà Xuất Bản</h4>
+        </div>
+        <div className="panel-collapse collapse in">
+          <div className="list-group">
+            <ul className="Publisher">
+              {publisherList.map((item) => (
+                <li key={item.publisherId} className="Publisher__Name">
+                  <Link to={`/products/publisher/${item.publisherId}`}>
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );

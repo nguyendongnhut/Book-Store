@@ -12,44 +12,46 @@ import ProductForm from "../component/ProductForm/ProductForm";
 import AddPublisher from "../component/AddPublisher/AddPublisher";
 import UpdatePublisher from "../component/UpdatePublisher/UpdatePublisher";
 
-import CartProduct from "../Pages/CartProduct";
+import CartProduct from "../Pages/CartProduct/CartProduct";
 
 function MainPage() {
   return (
     <div className="App">
       <Header />
-      <div className="container">
-        <section className="Content">
-          <div className="Right__Content">
-            <Categories />
-            <Publishers />
-          </div>
-          <div className="Left__Content">
-            <Switch>
-              <Route path="/products/AddProduct" component={ProductForm} />
-              <Route path="/products/AddPublisher" component={AddPublisher} />
-              <Route
-                path="/products/UpdatePublisher"
-                component={UpdatePublisher}
-              />
-              <Route
-                path="/products/publisher/:publisherId"
-                component={ProductsByPublisher}
-              />
-              <Route
-                path="/products/category/:categoryId"
-                component={ProductsByCategory}
-              />
-              <Route exact path="/products" component={Products} />
-              <Route
-                exact
-                path="/products/:productId"
-                component={ProductDetail}
-              />
-            </Switch>
-          </div>
-          {/* <CartProduct /> */}
-        </section>
+      <div className="main">
+        <div className="container">
+          <section className="Content">
+            <div className="Right__Content">
+              <Categories />
+              <Publishers />
+            </div>
+            <div className="Left__Content">
+              <Switch>
+                <Route path="/products/AddProduct" component={ProductForm} />
+                <Route path="/products/AddPublisher" component={AddPublisher} />
+                <Route
+                  path="/products/UpdatePublisher"
+                  component={UpdatePublisher}
+                />
+                <Route
+                  path="/products/publisher/:publisherId"
+                  component={ProductsByPublisher}
+                />
+                <Route
+                  path="/products/category/:categoryId"
+                  component={ProductsByCategory}
+                />
+                <Route exact path="/products" component={Products} />
+                <Route
+                  exact
+                  path="/products/:productId"
+                  component={ProductDetail}
+                />
+              </Switch>
+            </div>
+            {/* <CartProduct /> */}
+          </section>
+        </div>
       </div>
     </div>
   );
