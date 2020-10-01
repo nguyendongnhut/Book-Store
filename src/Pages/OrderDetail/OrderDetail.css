@@ -1,0 +1,23 @@
+.iaIXXn {
+    display: inline-block;
+    border: none;
+    margin-right: 25px;
+    margin-top: 7px;
+}
+
+.Cart-products__price {
+    text-align: left;
+}
+
+.Cart-products__price-name {
+    text-align: center;
+}
+
+.qty__amount {
+    text-align: center;
+}
+
+.Cart-products__price-name,
+.qty__name {
+    margin-bottom: 15px;
+}

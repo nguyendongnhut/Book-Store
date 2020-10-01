@@ -18,6 +18,7 @@ import PrivateRoute from "./helpers/PrivateRoute";
 import Cart from "./component/Cart/Cart";
 import CartProvider from "./Contexts/CartContext";
 import CartProduct from "./Pages/CartProduct/CartProduct";
+import MainOrder from "./component/MainOrder/MainOrder";
 
 // import AddProduct from "./component/ProductForm/ProductForm";
 
@@ -54,6 +55,7 @@ function App() {
           <PrivateRoute path="/products" component={MainPage} />
           {/* <Route path="/products/add" component={AddProduct} /> */}
           <Route path="/cart" component={CartProduct} />
+          <Route path="/order" component={MainOrder} />
         </Switch>
       </div>
     </CartProvider>
