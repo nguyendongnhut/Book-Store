@@ -1,13 +1,17 @@
 import React from "react";
+
 import { useState } from "react";
 import { useEffect } from "react";
 
 import Order from "../../component/Order/Order";
+import { useParams } from "react-router-dom";
 
-AllOrder.propTypes = {};
+OrderOfUser.propTypes = {};
 
-function AllOrder(props) {
+function OrderOfUser(props) {
   const [orders, setOrders] = useState([]);
+
+  const { userId } = useParams();
 
   useEffect(() => {
     async function FetchAllOrders() {
@@ -20,7 +24,7 @@ function AllOrder(props) {
       };
 
       const response = await fetch(
-        `http://localhost:3001/api/cart/orders/all`,
+        `http://localhost:3001/api/cart/userId/${userId}`,
         requestOptions
       );
 
@@ -42,4 +46,4 @@ function AllOrder(props) {
   );
 }
 
-export default AllOrder;
+export default OrderOfUser;

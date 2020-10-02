@@ -26,7 +26,9 @@ function Header() {
             <Link to="/products">Products</Link>
           </li>
           <li>
-            <Info />
+            <div className="dropdown">
+              <Info />
+            </div>
           </li>
           {sessionStorage.getItem("token") ? (
             <li>

@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import "../Header/Header.css";
 
 Info.propTypes = {
   name: PropTypes.string,
@@ -13,7 +15,7 @@ Info.defaultProps = {
 
 function Info(props) {
   const [name, setName] = useState("");
-
+  const [userId, setUserId] = useState("");
   useEffect(() => {
     async function FetchGetUserName() {
       const requestOptions = {
@@ -33,13 +35,27 @@ function Info(props) {
       const responseJSON = await response.json();
 
       const data = responseJSON[0].username;
+      const user = responseJSON[0].userId;
       setName(data);
+      setUserId(user);
     }
 
     FetchGetUserName();
   }, []);
 
-  return <div>{name}</div>;
+  return (
+    <React.Fragment>
+      {name}
+      <div className="dropdown-content">
+        <Link to={`/order/userId/${userId}`}>
+          <p>History Orders</p>
+        </Link>
+        <Link to="#">
+          <p>Change Info</p>
+        </Link>
+      </div>
+    </React.Fragment>
+  );
 }
 
 export default Info;
