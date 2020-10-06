@@ -67,7 +67,7 @@ function OrderDetail(props) {
                 <p className="Cart-products__real-price">{item.price}đ</p>
               </div>
               <div className="Cart-products__qty">
-                <div className="CartQty__StyledCartQty-o1bx97-0 iaIXXn">
+                <div className="iaIXXn qty__count">
                   <p className="qty__name">Số lượng</p>
                   <p className="qty__amount">{item.orderNumber}</p>
                 </div>

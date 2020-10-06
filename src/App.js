@@ -52,8 +52,8 @@ function App() {
         <Switch>
           <Route exact path="/login" component={Login} />
 
-          <PrivateRoute path="/products" component={MainPage} />
-          {/* <Route path="/products/add" component={AddProduct} /> */}
+          {/* <PrivateRoute path="/products" component={MainPage} /> */}
+          <Route path="/products" component={MainPage} />
           <Route path="/cart" component={CartProduct} />
           <Route path="/order" component={MainOrder} />
         </Switch>

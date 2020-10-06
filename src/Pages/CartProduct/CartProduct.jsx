@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 
 import { Link, useHistory } from "react-router-dom";
 
-import Cart from "../../component/Cart/Cart";
 import { CartContext } from "../../Contexts/CartContext";
 
 import Header from "../../component/Header/Header";
 
+import * as NumberToPrice from "../../constants/NumberToPrice";
 import "./CartProduct.css";
 import { useEffect } from "react";
 import axios from "axios";
@@ -205,6 +205,7 @@ function CartProduct(props) {
   async function Pay() {
     if (!sessionStorage.getItem("token")) {
       history.push("/login");
+      return;
     }
 
     const id = await addOrder();
@@ -246,7 +247,9 @@ function CartProduct(props) {
             </div>
             <div className="Cart-products__details">
               <div className="Cart-products__price">
-                <p className="Cart-products__real-price">{item.price}</p>
+                <p className="Cart-products__real-price">
+                  {NumberToPrice.Price(`${item.price}`) + "đ"}
+                </p>
               </div>
               <div className="Cart-products__qty">
                 <div className="CartQty__StyledCartQty-o1bx97-0 iaIXXn">
@@ -290,13 +293,15 @@ function CartProduct(props) {
                     <ul className="Prices__items">
                       <li className="Prices__item">
                         <span className="Prices__text">Tạm Tính</span>
-                        <span className="Prices__value">{totalPrice}</span>
+                        <span className="Prices__value">
+                          {NumberToPrice.Price(`${totalPrice}`) + "đ"}
+                        </span>
                       </li>
                     </ul>
                     <p className="Prices__total">
                       <span className="Prices__text">Thành Tiền</span>
                       <span className="Prices__value Prices__value--final">
-                        {totalPrice}đ
+                        {NumberToPrice.Price(`${totalPrice}`) + "đ"}
                       </span>
                     </p>
                   </div>

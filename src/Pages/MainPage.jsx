@@ -16,7 +16,7 @@ import CartProduct from "../Pages/CartProduct/CartProduct";
 
 function MainPage() {
   return (
-    <div className="App">
+    <React.Fragment>
       <Header />
       <div className="main">
         <div className="container">
@@ -53,7 +53,7 @@ function MainPage() {
           </section>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 }
 

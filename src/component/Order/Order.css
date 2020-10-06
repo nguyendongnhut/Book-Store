@@ -31,3 +31,23 @@
     line-height: 20px;
     color: rgb(51, 51, 51);
 }
+
+th:first-child,
+td:first-child {
+    width: 12%;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+    width: 10%;
+}
+
+th:last-child,
+td:last-child {
+    width: 10%;
+}
+
+th,
+td {
+    text-align: center;
+}

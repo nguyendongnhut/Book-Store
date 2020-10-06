@@ -14,6 +14,10 @@ function Header() {
     history.push("/login");
   };
 
+  const handleLogin = () => {
+    history.push("/login");
+  };
+
   return (
     <div className="Header">
       <div className="Header__logo"></div>
@@ -25,18 +29,22 @@ function Header() {
           <li>
             <Link to="/products">Products</Link>
           </li>
-          <li>
-            <div className="dropdown">
-              <Info />
-            </div>
-          </li>
+          {sessionStorage.getItem("token") ? (
+            <li>
+              <div className="dropdown">
+                <Info />
+              </div>
+            </li>
+          ) : (
+            ""
+          )}
           {sessionStorage.getItem("token") ? (
             <li>
               <button onClick={handleLogout}>Logout</button>
             </li>
           ) : (
             <li>
-              <button>Login</button>
+              <button onClick={handleLogin}>Login</button>
             </li>
           )}
         </ul>

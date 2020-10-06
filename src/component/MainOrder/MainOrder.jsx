@@ -8,7 +8,7 @@ import OrderOfUser from "../../Pages/OrderOfUser/OrderOfUser";
 
 function MainOrder(props) {
   return (
-    <div className="App">
+    <React.Fragment>
       <Header />
       <div className="main">
         <div className="container">
@@ -21,7 +21,7 @@ function MainOrder(props) {
           </section>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 }
 

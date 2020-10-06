@@ -70,10 +70,17 @@
 }
 
 .Products__price {
+  display: flex;
+}
+
+.Products__price p {
   font-size: 1.3rem;
-  display: inline-table;
   color: #242424;
   font-weight: 500;
   padding: 10px 0 0;
   float: left;
+}
+
+.Products__Add {
+  margin: 15px 0 10px 0;
 }

@@ -35,9 +35,13 @@ function AllOrder(props) {
     FetchAllOrders();
   }, []);
 
+  const handleDeleteOrder = () => {
+    console.log("asfsdf");
+  };
+
   return (
     <React.Fragment>
-      <Order list={orders} />
+      <Order list={orders} handleDeleteOrder={handleDeleteOrder} />
     </React.Fragment>
   );
 }

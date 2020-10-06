@@ -9,6 +9,8 @@ import { CartContext } from "../../Contexts/CartContext";
 import "./Products.css";
 import Cart from "../../component/Cart/Cart";
 
+import * as NumberToPrice from "../../constants/NumberToPrice";
+
 Products.propTypes = {
   products: PropTypes.array,
 };
@@ -134,9 +136,15 @@ function Products(props) {
             <Link to="#">{item.authorname}</Link>
           </p>
         </div>
-        <div className="Products__price">{`${item.price} VNĐ`}</div>
-        <div>
-          <button onClick={addToCart} key={item.productId}>
+        <div className="Products__price">
+          <p>{NumberToPrice.Price(`${item.price}`) + "đ"}</p>
+        </div>
+        <div className="Products__Add">
+          <button
+            onClick={addToCart}
+            key={item.productId}
+            className="Products__Add-button"
+          >
             Add to cart
           </button>
         </div>

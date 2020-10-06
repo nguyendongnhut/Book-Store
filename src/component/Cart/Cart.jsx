@@ -1,8 +1,12 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../Contexts/CartContext";
-import { Products } from "../../product/Products/Products";
-import PropTypes from "prop-types";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
+
+import * as NumberToPrice from "../../constants/NumberToPrice";
 
 Cart.propTypes = {};
 
@@ -13,10 +17,15 @@ function Cart(props) {
   return (
     <div>
       <Link to="/cart">
-        <span>items in cart: {cart.length}</span>
+        <span>
+          <FontAwesomeIcon icon={faCartPlus} />({cart.length})
+        </span>
       </Link>
       <br />
-      <span>total price: {totalPrice}</span>
+      <span>
+        <FontAwesomeIcon icon={faDollarSign} />:
+        {NumberToPrice.Price(`${totalPrice}`) + "đ"}
+      </span>
     </div>
   );
 }
