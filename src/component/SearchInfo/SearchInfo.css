@@ -1,0 +1,120 @@
+.Search {
+    position: absolute;
+    top: 21%;
+    right: 12.5%;
+    background: #2f3640;
+    height: 40px;
+    border-radius: 40px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.Search:hover > .Search-txt {
+    width: 240px;
+    padding: 0 6px 0 20px;
+}
+
+.Search:hover > .Search-btn {
+    background: white;
+    color: black;
+}
+
+.Search-btn {
+    color: #e84118;
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    background: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+    color: white;
+    cursor: pointer;
+}
+
+.Search-btn > i {
+    font-size: 30px;
+}
+
+.Search-txt {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+    font-weight: bold;
+}
+
+.Search__Detail {
+    display: none;
+    position: absolute;
+    top: 100%;
+    background-color: #f9f9f9;
+    max-width: 280px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.Search:hover .Search__Detail {
+    display: block;
+}
+
+.Search__Detail-price {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Search__Detail-price input {
+    width: 45%;
+    height: 30px;
+    padding: 0 8px;
+    background: #fff;
+    border-radius: 4px;
+    text-align: left;
+    border: 1px solid #b8b8b8;
+    outline: 0;
+    font-size: 13px;
+}
+
+.Search__Detail-price span {
+    width: 7px;
+    height: 1px;
+    font-size: 0;
+    display: inline-block;
+    background: #9a9a9a;
+    margin: 0 4px;
+    vertical-align: middle;
+    margin-top: 15px;
+}
+
+.Search__Detail-authorname input,
+.Search__Detail-category select,
+.Search__Detail-publisher select,
+.Search__Detail-submit button {
+    width: 100%;
+    height: 30px;
+    padding: 0 8px;
+    background: #fff;
+    border-radius: 4px;
+    text-align: left;
+    border: 1px solid #b8b8b8;
+    outline: 0;
+    font-size: 13px;
+    margin-top: 15px;
+}
+
+.Search__Detail-submit button {
+    background: red;
+    cursor: pointer;
+    text-align: center;
+}

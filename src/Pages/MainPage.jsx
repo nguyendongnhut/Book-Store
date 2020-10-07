@@ -13,6 +13,7 @@ import AddPublisher from "../component/AddPublisher/AddPublisher";
 import UpdatePublisher from "../component/UpdatePublisher/UpdatePublisher";
 
 import CartProduct from "../Pages/CartProduct/CartProduct";
+import SearchInfo from "../component/SearchInfo/SearchInfo";
 
 function MainPage() {
   return (
@@ -20,6 +21,7 @@ function MainPage() {
       <Header />
       <div className="main">
         <div className="container">
+          <SearchInfo />
           <section className="Content">
             <div className="Right__Content">
               <Categories />
