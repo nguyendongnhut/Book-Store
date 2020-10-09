@@ -1,6 +1,6 @@
 .Search {
     position: absolute;
-    top: 21%;
+    top: 13%;
     right: 12.5%;
     background: #2f3640;
     height: 40px;
@@ -21,9 +21,12 @@
 
 .Search-btn {
     color: #e84118;
+    position: absolute;
+    top: 0%;
+    left: 86%;
     float: right;
     width: 40px;
-    height: 40px;
+    height: 42px;
     border-radius: 50%;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -40,7 +43,7 @@
     font-size: 30px;
 }
 
-.Search-txt {
+/* .Search-txt {
     border: none;
     background: none;
     outline: none;
@@ -52,12 +55,12 @@
     line-height: 40px;
     width: 0px;
     font-weight: bold;
-}
+} */
 
 .Search__Detail {
     display: none;
     position: absolute;
-    top: 100%;
+    top: 110%;
     background-color: #f9f9f9;
     max-width: 280px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -65,6 +68,7 @@
     z-index: 1;
 }
 
+.Search:active .Search__Detail,
 .Search:hover .Search__Detail {
     display: block;
 }
@@ -113,8 +117,22 @@
     margin-top: 15px;
 }
 
+.Search__Detail-authorname {
+    margin-top: 15px;
+}
+
 .Search__Detail-submit button {
     background: red;
     cursor: pointer;
     text-align: center;
+}
+
+.Search .ui.form {
+    position: relative;
+    height: 100%;
+    width: 280px;
+}
+
+.Search .ui.form input[type="text"] {
+    width: 100%;
 }

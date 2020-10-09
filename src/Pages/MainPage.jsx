@@ -14,6 +14,8 @@ import UpdatePublisher from "../component/UpdatePublisher/UpdatePublisher";
 
 import CartProduct from "../Pages/CartProduct/CartProduct";
 import SearchInfo from "../component/SearchInfo/SearchInfo";
+import ProductSearch from "../component/ProductSearch/ProductSearch";
+import ProductInfo from "../component/ProductInfo/ProductInfo";
 
 function MainPage() {
   return (
@@ -43,7 +45,9 @@ function MainPage() {
                   path="/products/category/:categoryId"
                   component={ProductsByCategory}
                 />
+
                 <Route exact path="/products" component={Products} />
+                <Route path="/products/:search" component={ProductInfo} />
                 <Route
                   exact
                   path="/products/:productId"

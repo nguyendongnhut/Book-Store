@@ -10,6 +10,7 @@ import "./Products.css";
 import Cart from "../../component/Cart/Cart";
 
 import * as NumberToPrice from "../../constants/NumberToPrice";
+import ProductSearch from "../../component/ProductSearch/ProductSearch";
 
 Products.propTypes = {
   products: PropTypes.array,
@@ -83,12 +84,13 @@ function Products(props) {
   };
 
   const addToCart = (key) => {
-    console.log(key._targetInst.key);
+    // console.log(key._targetInst.key);
+    console.log(key);
     //get index button onClick
 
     //filter get product from productList according to key button
     const tshirt = productList.filter((item) => {
-      return item.productId === parseInt(key._targetInst.key);
+      return item.productId === parseInt(key);
     });
 
     let tshirt1 = {
@@ -111,50 +113,52 @@ function Products(props) {
 
   localStorage.setItem("carts", JSON.stringify(cart));
 
-  let ListProduct = currentProduct.map((item) => (
-    <li key={item.productId} className="Products__item">
-      <div className="Products__info">
-        <div className="Products__img">
-          <img
-            src={`http://localhost:3001/api/image/${item.image}`}
-            alt={item.name}
-          />
-        </div>
-        <div className="Products__title">
-          <Link
-            to={`/products/${item.productId}`}
-            className="Products__name-title"
-            title={item.name}
-          >
-            {item.name.length > 15
-              ? item.name.substr(0, 15) + "..."
-              : item.name}
-          </Link>
-        </div>
-        <div className="Products__author">
-          <p className="Products__name-author">
-            <Link to="#">{item.authorname}</Link>
-          </p>
-        </div>
-        <div className="Products__price">
-          <p>{NumberToPrice.Price(`${item.price}`) + "đ"}</p>
-        </div>
-        <div className="Products__Add">
-          <button
-            onClick={addToCart}
-            key={item.productId}
-            className="Products__Add-button"
-          >
-            Add to cart
-          </button>
-        </div>
-      </div>
-    </li>
-  ));
+  // let ListProduct = currentProduct.map((item) => (
+  //   <li key={item.productId} className="Products__item">
+  //     <div className="Products__info">
+  //       <div className="Products__img">
+  //         <img
+  //           src={`http://localhost:3001/api/image/${item.image}`}
+  //           alt={item.name}
+  //         />
+  //       </div>
+  //       <div className="Products__title">
+  //         <Link
+  //           to={`/products/${item.productId}`}
+  //           className="Products__name-title"
+  //           title={item.name}
+  //         >
+  //           {item.name.length > 15
+  //             ? item.name.substr(0, 15) + "..."
+  //             : item.name}
+  //         </Link>
+  //       </div>
+  //       <div className="Products__author">
+  //         <p className="Products__name-author">
+  //           <Link to="#">{item.authorname}</Link>
+  //         </p>
+  //       </div>
+  //       <div className="Products__price">
+  //         <p>{NumberToPrice.Price(`${item.price}`) + "đ"}</p>
+  //       </div>
+  //       <div className="Products__Add">
+  //         <button
+  //           onClick={addToCart}
+  //           key={item.productId}
+  //           className="Products__Add-button"
+  //         >
+  //           Add to cart
+  //         </button>
+  //       </div>
+  //     </div>
+  //   </li>
+  // ));
 
   return (
     <div className="ListProducts">
-      <ul className="Products">{ListProduct}</ul>
+      <ul className="Products">
+        <ProductSearch list={currentProduct} addToCart={addToCart} />
+      </ul>
       <Pagination
         perPage={perPage}
         totalProduct={productList.length}
