@@ -1,7 +1,7 @@
 .Products {
   display: flex;
   align-items: stretch;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   flex-wrap: wrap;
 }
 

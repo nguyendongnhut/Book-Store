@@ -20,34 +20,43 @@ function Header() {
 
   return (
     <div className="Header">
-      <div className="Header__logo"></div>
-      <div className="Header__menu">
-        <ul>
-          <li>
-            <Cart />
-          </li>
-          <li>
-            <Link to="/products">Products</Link>
-          </li>
-          {sessionStorage.getItem("token") ? (
+      <div className="Header__logo">Logo</div>
+      <div className="Header__Right">
+        <div className="Header__menu">
+          <ul>
             <li>
-              <div className="dropdown">
-                <Info />
-              </div>
+              <Cart />
             </li>
-          ) : (
-            ""
-          )}
-          {sessionStorage.getItem("token") ? (
-            <li>
-              <button onClick={handleLogout}>Logout</button>
+            {sessionStorage.getItem("token") ? (
+              <li>
+                <div className="dropdown">
+                  <Info />
+                </div>
+              </li>
+            ) : (
+              ""
+            )}
+            {sessionStorage.getItem("token") ? (
+              <li>
+                <button onClick={handleLogout}>Logout</button>
+              </li>
+            ) : (
+              <li>
+                <button onClick={handleLogin}>Login</button>
+              </li>
+            )}
+          </ul>
+        </div>
+        <div className="nav-header">
+          <ul className="nav-header__list">
+            <li className="nav-header__child">
+              <Link to="/products">Products</Link>
             </li>
-          ) : (
-            <li>
-              <button onClick={handleLogin}>Login</button>
+            <li className="nav-header__child">
+              <Link to="/products/AddProduct">Add Product</Link>
             </li>
-          )}
-        </ul>
+          </ul>
+        </div>
       </div>
     </div>
   );

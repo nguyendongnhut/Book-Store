@@ -25,7 +25,7 @@ function ProductSearch(props) {
           </div>
           <div className="Products__title">
             <Link
-              to={`/products/${item.productId}`}
+              to={`/products/productDetail/${item.productId}`}
               className="Products__name-title"
               title={item.name}
             >

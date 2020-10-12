@@ -45,14 +45,13 @@ function MainPage() {
                   path="/products/category/:categoryId"
                   component={ProductsByCategory}
                 />
-
-                <Route exact path="/products" component={Products} />
-                <Route path="/products/:search" component={ProductInfo} />
                 <Route
-                  exact
-                  path="/products/:productId"
+                  path="/products/productDetail/:productId"
                   component={ProductDetail}
                 />
+                <Route path="/products/:search" component={ProductInfo} />
+
+                <Route exact path="/products" component={Products} />
               </Switch>
             </div>
             {/* <CartProduct /> */}
