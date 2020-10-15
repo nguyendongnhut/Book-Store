@@ -23,7 +23,7 @@ function MainPage() {
       <Header />
       <div className="main">
         <div className="container">
-          <SearchInfo />
+          {/* <SearchInfo /> */}
           <section className="Content">
             <div className="Right__Content">
               <Categories />

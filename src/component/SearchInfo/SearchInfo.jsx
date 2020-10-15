@@ -148,6 +148,21 @@ function SearchInfo(props) {
     );
   });
 
+  let lowPriceArray = [];
+  let highPriceArray = [];
+  for (let i = 15000; i < 50000000; i *= 2) {
+    lowPriceArray.push(i);
+    highPriceArray.push(i);
+  }
+
+  const lowArray = lowPriceArray.map((item) => {
+    return <option>{item}</option>;
+  });
+
+  const highArray = highPriceArray.map((item) => {
+    return <option>{item}</option>;
+  });
+
   return (
     <React.Fragment>
       <div className="Search">
@@ -166,19 +181,13 @@ function SearchInfo(props) {
           </div>
           <div className="Search__Detail">
             <div className="Search__Detail-price">
-              <input
-                type="number"
-                name="lowPrice"
-                placeholder="Low Price ..."
-                ref={register}
-              />
+              <select name="lowPrice" ref={register}>
+                {lowArray}
+              </select>
               <span>-</span>
-              <input
-                type="number"
-                name="highPrice"
-                placeholder="High Price ..."
-                ref={register}
-              />
+              <select name="highPrice" ref={register}>
+                {highArray}
+              </select>
             </div>
             <div className="Search__Detail-authorname">
               <input

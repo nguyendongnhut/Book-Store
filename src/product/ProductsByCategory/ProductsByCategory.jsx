@@ -78,6 +78,8 @@ function ProductsByCategory() {
     // setCart((currentState) => [...currentState, tshirt]);
   };
 
+  localStorage.setItem("carts", JSON.stringify(cart));
+
   return (
     // <div className="ListProductCategory">
     //   <ul className="ProductCategory">

@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
+import "./ProductForm.css";
+
 ProductForm.propTypes = {
   product: PropTypes.object,
 };
@@ -185,6 +187,7 @@ function ProductForm(props) {
       id="reset-form-add"
       onSubmit={handleSubmit(onSubmit)}
       encType="multipart/form-data"
+      className="form-add"
     >
       <label>Book Name</label>
       <input name="bookName" ref={register} />

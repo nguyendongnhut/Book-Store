@@ -2,8 +2,11 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./Header.css";
 
+import Logo from "../../images/icon/book-logo-vector.jpg";
+
 import Cart from "../Cart/Cart";
 import Info from "../Info/Info";
+import SearchInfo from "../SearchInfo/SearchInfo";
 
 function Header() {
   const history = useHistory();
@@ -19,43 +22,58 @@ function Header() {
   };
 
   return (
-    <div className="Header">
-      <div className="Header__logo">Logo</div>
-      <div className="Header__Right">
-        <div className="Header__menu">
-          <ul>
-            <li>
-              <Cart />
-            </li>
-            {sessionStorage.getItem("token") ? (
-              <li>
-                <div className="dropdown">
-                  <Info />
+    <div className="Header-wrapper">
+      <div className="Header__top">
+        <div className="container">
+          <div className="Header__top-nav">
+            <ul className="top-bar__nav nav-right">
+              <li className="cart-item">
+                <div className="Header__top-button">
+                  <Cart />
                 </div>
               </li>
-            ) : (
-              ""
-            )}
-            {sessionStorage.getItem("token") ? (
-              <li>
-                <button onClick={handleLogout}>Logout</button>
+              <li className="user-name">
+                {sessionStorage.getItem("token") ? (
+                  <div className="dropdown">
+                    <Info />
+                  </div>
+                ) : (
+                  ""
+                )}
               </li>
-            ) : (
-              <li>
-                <button onClick={handleLogin}>Login</button>
+              <li className="account-item">
+                {sessionStorage.getItem("token") ? (
+                  <button onClick={handleLogout}>Logout</button>
+                ) : (
+                  <button onClick={handleLogin}>Login</button>
+                )}
               </li>
-            )}
-          </ul>
+            </ul>
+          </div>
         </div>
-        <div className="nav-header">
-          <ul className="nav-header__list">
-            <li className="nav-header__child">
-              <Link to="/products">Products</Link>
-            </li>
-            <li className="nav-header__child">
-              <Link to="/products/AddProduct">Add Product</Link>
-            </li>
-          </ul>
+      </div>
+      <div className="Header__main">
+        <div className="container">
+          <div className="Header__main-inner">
+            <div className="logo">
+              <Link to="#">
+                <img src={Logo} alt="" />
+              </Link>
+            </div>
+            <div className="main__menu">
+              <ul className="main__menu-nav nav-right">
+                <li className="menu-item">
+                  <Link to="/products">Products</Link>
+                </li>
+                <li className="menu-item">
+                  <Link to="/products/addProduct">Add Product</Link>
+                </li>
+                <li>
+                  <SearchInfo />
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>

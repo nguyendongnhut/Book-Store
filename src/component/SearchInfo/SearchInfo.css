@@ -1,7 +1,7 @@
 .Search {
-    position: absolute;
-    top: 13%;
-    right: 12.5%;
+    /* position: absolute;
+    top: 0%;
+    right: 0%; */
     background: #2f3640;
     height: 40px;
     border-radius: 40px;
@@ -78,21 +78,13 @@
     justify-content: space-between;
 }
 
-.Search__Detail-price input {
-    width: 45%;
-    height: 30px;
-    padding: 0 8px;
-    background: #fff;
-    border-radius: 4px;
-    text-align: left;
-    border: 1px solid #b8b8b8;
-    outline: 0;
-    font-size: 13px;
+.Search__Detail .Search__Detail-price select {
+    font-size: 85%;
 }
 
 .Search__Detail-price span {
-    width: 7px;
-    height: 1px;
+    width: 12px;
+    height: 1.5px;
     font-size: 0;
     display: inline-block;
     background: #9a9a9a;
